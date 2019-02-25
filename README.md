@@ -2,11 +2,11 @@
 A java implementation of tetris
 
 ## How to use
-* Download the JTeris-X.Y.Z.jar from [releases](https://github.com/Federico-Ciuffardi/pascalRPG/releases)
+* Download the JTeris-X.Y.Z.jar from [releases](https://github.com/Federico-Ciuffardi/JTetris/releases)
 * run the jar as an executable:
 
 ## Versioning
-Using [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases](https://github.com/Federico-Ciuffardi/IOSU/releases) 
+Using [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases](https://github.com/Federico-Ciuffardi/JTetris/releases) 
 
 ## Authors
 * Federico Ciuffardi
