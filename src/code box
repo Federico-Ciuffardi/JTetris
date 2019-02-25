@@ -1,0 +1,25 @@
+		if (x+size <= cols && y+size<= rows )
+			for (int i = 0; i < size; i++)
+				for (int j = 0; j <  i ; j++){
+					aux.id =gameGrid[x+i][y+j].id ;
+					aux.falling = gameGrid[x+i][y+j].falling;
+					aux.current = gameGrid[x+i][y+j].current;
+					gameGrid[x+i][y+j].id = gameGrid[j][y+i].id ;
+					gameGrid[x+i][y+j].falling= gameGrid[j][y+i].falling;
+					gameGrid[x+i][y+j].current= gameGrid[j][y+i].current;
+					gameGrid[x+j][y+i].id = aux.id;
+					gameGrid[x+j][y+i].falling = aux.falling;
+					gameGrid[x+j][y+i].current = aux.falling;
+				}
+		for (int i = y; i < y+size; i++)
+			for (int j = x; j < x + (size / 2) ; j++){
+				aux.id =gameGrid[i][j].id ;
+				aux.falling = gameGrid[i][j].falling;
+				aux.current = gameGrid[i][j].current;
+				gameGrid[i][j].id = gameGrid[i][(x+size)-j].id ;
+				gameGrid[i][j].falling= gameGrid[i][(x+size)-j].falling;
+				gameGrid[i][j].current= gameGrid[i][(x+size)-j].current;
+				gameGrid[i][(x+size)-j].id = aux.id;
+				gameGrid[i][(x+size)-j].falling = aux.falling;
+				gameGrid[i][(x+size)-j].current = aux.falling;
+		}

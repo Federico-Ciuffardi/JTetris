@@ -1,0 +1,53 @@
+//import java.applet.Applet;
+//import java.applet.AudioClip;
+import java.io.*;
+import javax.sound.sampled.*;
+
+public class Sound {
+	//public static final AudioClip sndBack = Applet.newAudioClip(Sound.class.getResource("Tetris.wav"));
+	private static final int BUFFER_SIZE = 1024;
+
+	public static void setBackgroundMusic() {
+		AudioClip sndBack = Applet.newAudioClip(Sound.class.getResource("Tetris.wav"));
+		sndBack.loop();
+	}
+
+	public static void play(String audioFilePath) {
+		new Thread(new Runnable(){
+			@Override
+			public void run(){
+			//	File audioFile = new File(audioFilePath+".wav");
+				try {
+					AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(audioFilePath+".wav"));
+					AudioFormat format = audioStream.getFormat();
+					DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+					SourceDataLine audioLine = (SourceDataLine) AudioSystem.getLine(info);
+					audioLine.open(format);
+						audioLine.start();
+					byte[] bytesBuffer = new byte[BUFFER_SIZE];
+					int bytesRead = -1;
+					while ((bytesRead = audioStream.read(bytesBuffer)) != -1) {
+						audioLine.write(bytesBuffer, 0, bytesRead);
+					}
+
+					audioLine.drain();
+					audioLine.stop();
+					audioLine.close();
+					audioLine = null;
+					audioStream.close();
+					audioStream = null;
+
+				} catch (UnsupportedAudioFileException ex) {
+					System.out.println("The specified audio file is not supported.");
+					ex.printStackTrace();
+				} catch (LineUnavailableException ex) {
+					System.out.println("Audio line for playing back is unavailable.");
+					ex.printStackTrace();
+				} catch (IOException ex) {
+					System.out.println("Error playing the audio file.");
+					ex.printStackTrace();
+				}
+				}
+			}).start();
+		}
+}
