@@ -1,6 +1,8 @@
 # JTetris
 A java implementation of tetris
 
+![](https://i.imgur.com/LKO8JIR.png
+)
 ## How to use
 * Download the JTeris-X.Y.Z.jar from [releases](https://github.com/Federico-Ciuffardi/JTetris/releases)
 * run the jar as an executable:
